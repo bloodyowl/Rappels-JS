@@ -274,6 +274,24 @@ sheldon();
                 </aside>
             </section>
             <section>
+                <h2>Objets et tableaux</h2>
+
+                <p>Object : ensemble de valeurs nommées</p>
+                    <pre><code data-trim contenteditable>
+var point = new Object();
+point.x = 1;
+point["y"] = 2;
+
+var point = { x : 1, y : 3 };
+
+                    </code></pre>
+                <p>Tableaux : ensemble de valeurs indexées</p>
+                    <pre><code data-trim contenteditable>
+var a = new Array(1.2, true, { x:1, y:3 });
+var b = [1.2, true, { x:1, y:3 }];
+                    </code></pre>
+            </section>
+            <section>
                 <h2>Programmation Orientée Objet</h2>
 
                 <p>Savoir si Javascript est orienté Objet a autant de sens que de savoir si Nantes est en Bretagne.</p>
@@ -284,6 +302,24 @@ sheldon();
             <section>
                 <h2>Pièges courants</h2>
                 <h3>Autant les éviter</h3>
+            </section>
+            <section>
+                <h2>this</h2>
+                <p><code>this</code> représente le contexte dans lequel s’exécute une fonction au moment où elle est appelée</p>
+                <pre><code>
+function quiSuisJe() {
+    alert(this);
+}
+
+var coucou = {
+    quiSuisJe : function () {
+        alert(this);
+    }
+};
+
+quiSuisJe();        // [object Window]
+coucou.quiSuisJe(); // [object Object]
+                </code></pre>
             </section>
             <section>
                 <h2>Nombres</h2>
@@ -324,6 +360,7 @@ $(el).show();   // Ajoute un "display:block", WTF ?!
 el.style.display = 'none';
 el.style.display = '';      // Ne fait que ce que vous lui demandez
                 </code></pre>
+                <p><a href="http://youmightnotneedjquery.com/">You Might Not Need jQuery</a></p>
             </section>
             <section>
                 <h2>Autres Frameworks généraux</h2>
@@ -354,6 +391,37 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
                 <p>Jetez un oeil à <a href="http://microjs.com">MicroJS</a> et ses micro-librairies (inférieures à 5Ko) rendant chacune un service très précis.</p>
                 <p><a href="http://microjs.com">MicroJS</a> est <a href="https://github.com/madrobby/microjs.com">sur GitHub</a> et n'importe qui peut y ajouter son script licencié MIT ou équivalent.</p>
                 <p>Exemple : <a href="https://github.com/borisschapira/preloadr">preloadr.js</a></p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Quelques outils bien pratiques</h2>
+                <h3>pour mieux faire du Javascript</h3>
+            </section>
+            <section>
+                <h2>Qualité</h2>
+                <ul>
+                    <li><a href="http://www.jslint.com/">JSLint</a> : outil d'audit de code de Douglas Crockford (Yahoo, inventeur de JSON et auteur de <a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript: The Good Parts</a>. JSLint est utile, bien que très tatillon, voire intransigeant.</li>
+                    <li><a href="http://www.jshint.com/">JSHint</a> : fork JSLint de <a href="Anton Kovalyov">Anton Kovalyov</a>, pour développer un outil plus proche de la communauté.</li>
+                </ul>
+                <blockquote cite="http://brendaneich.com/2010/11/paren-free/">
+                    &ldquo;JSLint can suck it&rdquo;, Brendan Eich
+                </blockquote>
+            </section>
+            <section>
+                <h2>Compilateurs</h2>
+                <ul>
+                    <li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a> : compilateur/compresseur de Yahoo, bien éprouvé, hors-ligne (Java)</li>
+                    <li><a href="http://closure-compiler.appspot.com/home">Closure Compiler</a> : compilateur de Google, en ligne, en API ou hors ligne (Java)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Programmer en JS, mais pas tout à fait</h2>
+                <ul>
+                    <li><a href="http://www.typescriptlang.org/">TypeScript</a> : sur-ensemble de JavaScript, offrant des fonctionnalités d'ECMAScript 6 (classes, typages) et compilant en JavaScript d'aujourd'hui. Par <a href="https://twitter.com/ahejlsberg">Anders Hejlsberg</a> (concepteur du Framework .NET).</li>
+                    <li><a href="http://coffeescript.org/">CoffeeScript</a> : langage de développement basé sur l'indentation, se compilant en JavaScript et introduisant notamment des raccourcis de code comme <code>@</code> pour <code>this</code> et <code>::</code> pour les méthodes de prototype.</li>
+                    <li><a href="https://www.dartlang.org/">Dart</a> : langage de développement Web productif, compilant en JavaScript, livré avec son éditeur. Par Goofle.</li>
+                </ul>
             </section>
         </section>
         <section>
