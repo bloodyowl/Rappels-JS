@@ -356,6 +356,76 @@ function Hero(){
 }
 var myHero = new Hero();
                 </code></pre>
+                <p>Les champs sont cachés et on peut se servir de <code>Hero</code> comme constructeur paramétré si on le souhaite</p>
+            </section>
+            <section>
+                <h2>Prérequis #3 : accès extérieurs</h2>
+
+                <p>On peut ajouter un accesseur</p>
+                <pre><code data-trim contenteditable class="js">
+function Hero(name, superName){
+    var realName = name;
+    var surname = superName;
+    this.getName = function(){
+        return surname
+    };
+}
+
+var myHero = new Hero("Clark Kent", "Superman");
+alert(myHero.getName()); // "Superman"
+alert(myHero.realName); // undefined
+                </code></pre>
+            </section>
+            <section>
+                <h2>Prérequis #4 : le typage</h2>
+
+                <p>A chaud, pas trop possible, car Javascript n’a pas de types évolués : à part les types primitifs, tout est <code>Object</code></p>
+                <pre><code data-trim contenteditable class="js">
+alert(typeof(myHero)); // object
+                </code></pre>
+                <p>Par contre si je maintiens la liste des types existants, je peux tous les tester et arriver à la conclusion que :</p>
+                <pre><code data-trim contenteditable class="js">
+alert(myHero instanceof Hero); // « true »
+                </code></pre>
+            </section>
+            <section>
+                <h2>Prérequis #5 : le polymorphisme</h2>
+
+                <p>Javascript n’enregistre, pour un objet, qu’une seule référence vers une « source » structurelle : son prototype.</p>
+                <p>On parlera donc de Programmation Orientée Prototype (en attendant ECMAScript 6).</p>
+            </section>
+            <section>
+                <h2>Programmation Orientée Prototype</h2>
+
+                <p>En utilisant le prototype, on peut optimiser l'exemple précédent pour ne pas recopier l'accesseur dans toutes les instances et le définir uniquement quand <code>Hero</code> n'est pas encore initialisé :</p>
+                <pre><code data-trim contenteditable class="js">
+function Hero(name, superName){
+    var realName = name;
+    var surname = superName;
+    if (typeof Hero.initialized == "undefined"){
+        Hero.prototype.getName = function(){
+            return surname
+        };
+    }
+}
+
+var myHero = new Hero("Clark Kent", "Superman");
+alert(myHero.getName()); // "Superman"
+alert(myHero.realName); // undefined
+                </code></pre>
+            </section>
+            <section>
+                <h2>Programmation Orientée Prototype</h2>
+
+                <p>Mais attention alors à la dépendance au prototype</p>
+                <pre><code data-trim contenteditable class="js">
+var myHero = new Hero("Clark Kent", "Superman");
+alert(myHero.getName()); // "Superman"
+
+Hero.prototype.getName = function(){ return "Superslip" };
+alert(myHero.getName()); // "Superslip"
+                </code></pre>
+                <p>Encore un coup de Lex Luthor...</p>
             </section>
         </section>
         <section>
