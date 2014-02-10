@@ -290,23 +290,82 @@ var point = { x : 1, y : 3 };
 var a = new Array(1.2, true, { x:1, y:3 });
 var b = [1.2, true, { x:1, y:3 }];
                     </code></pre>
+
             </section>
             <section>
-                <h2>Programmation Orientée Objet</h2>
+                <h2>Objets et tableaux</h2>
 
-                <p>Savoir si Javascript est orienté Objet a autant de sens que de savoir si Nantes est en Bretagne.</p>
-                <p></p>
+                <p>Parcourir avec <code>for ... in</code></p>
+                <pre><code data-trim contenteditable>
+function consoleContenu(element) {
+    for( var identifiant in element ) {
+        console && console.log( identifiant + ":" + element[identifiant] );
+    }
+}
+
+consoleContenu(new Array(1.2, true, { x:1, y:3 }));
+consoleContenu({ x : 1, y : 3 });
+                </code></pre>
             </section>
         </section>
         <section>
             <section>
-                <h2>Pièges courants</h2>
-                <h3>Autant les éviter</h3>
+                <h2>JavaScript permet-il la POO ?</h2>
+                <h3>Tout dépend de la définition qu'on a de la POO...</h3>
             </section>
             <section>
-                <h2>this</h2>
+                <h2>POO "Classique"</h2>
+
+                <p>La POO repose sur 5 fondamentaux</p>
+                <ul>
+                    <li>L’objet, un conteneur symbolique</li>
+                    <li>L’encapsulation, qui confère à l’objet la sécurité de ses propriétés</li>
+                    <li>Les messages (ou méthodes), qui permettent à l’extérieur de communiquer avec mon objet</li>
+                    <li>Le typage, qui donne à l’objet une appartenance à une famille conceptuelle</li>
+                    <li>Le polymorphisme, qui autorise l’objet à appartenir à plusieurs familles conceptuelles</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Prérequis #1 : l'objet</h2>
+
+                <p>On peut utiliser <code>Object</code></p>
+                <pre><code data-trim contenteditable class="js">
+var myHero = {
+    realName: "Clark Kent",
+    surname: "Superman" 
+}
+                </code></pre>
+                <p>Suivant !</p>
+            </section>
+            <section>
+                <h2>Prérequis #2 : l'encapsulation</h2>
+
+                <p>Là, ça ne colle plus... Je peux modifier toutes les infos librement</p>
+                <pre><code data-trim contenteditable class="js">
+var myHero = {
+    realName: "Clark Kent",
+    surname: "Superman" 
+}
+myHero.realName = "Lex Luthor"; // Mouhahahahaaaa !
+                </code></pre>
+                <p>Mais on sait comment rendre indisponible une variable "à l'extérieur" : il suffit de la mettre dans une fonction</p>
+                <pre><code data-trim contenteditable class="js">
+function Hero(){
+    var realName = "Clark Kent";
+    var surname = "Superman";
+}
+var myHero = new Hero();
+                </code></pre>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Pièges et Astuces</h2>
+            </section>
+            <section>
+                <h2>Piège : contexte</h2>
                 <p><code>this</code> représente le contexte dans lequel s’exécute une fonction au moment où elle est appelée</p>
-                <pre><code>
+                <pre><code data-trim contenteditable>
 function quiSuisJe() {
     alert(this);
 }
@@ -322,9 +381,27 @@ coucou.quiSuisJe(); // [object Object]
                 </code></pre>
             </section>
             <section>
-                <h2>Nombres</h2>
+                <h2>Piège : gestion des erreurs</h2>
+                <p>Les gestion des erreurs est possible en JavaScript</p>
+                <pre><code data-trim contenteditable>
+try {
+    // code Javascript à surveiller
+}
+catch (erreur) {
+    alert(erreur.name);
+    alert(erreur.message);
+}
+finally {
+    // code Javascript à exécuter dans
+    // tous les cas (facultatif)
+}
+                </code></pre>
+                <p>Malheureusement, cela entraine une <a href="http://jsperf.com/try-catch-performance-overhead">surcharge mémoire indédiable sur V8</a>, aujourd'hui moteur leader.</p>
+            </section>
+            <section>
+                <h2>Piège : nombres</h2>
                 <p>Maximum, minimum</p>
-                <pre><code>
+                <pre><code data-trim contenteditable>
 var x = 9007199254740992; // Max
 var y = -x;
 x == x + 1; // true
@@ -334,12 +411,95 @@ z = x + 2; // 9007199254740994, ok
 z - 1; // 9007199254740992, WTF ?
                 </code></pre>
                 <p>Opérateurs arithmétiques en 64bits, décalages et opérations bit à bit en 32 bits seulement</p>
-                <pre><code>
+                <pre><code data-trim contenteditable>
 var x = 9007199254740992; // 2^53, [10000000....00]
 x / 2;      // 4503599627370496, ok
 x >> 1;     // 0 au lieu de 2^52
 x | 1;      // 1 au lieu de 2^52 + 1
                 </code></pre>
+            </section>
+            <section>
+                <h2>Piège : Référence Vs. Type</h2>
+
+                <pre><code data-trim contenteditable>
+var objects = [{}, {}, {}];
+
+for(var i = 0; i < queries.length; i++) {
+	objects[i].logIndex = function() {
+        console.log(i);
+    }
+}
+
+objects[0].logIndex(); // 3, WTF !
+objects[1].logIndex(); // 3, WTF !
+objects[2].logIndex(); // 3, WTF !
+                </code></pre>
+                <p>Quand <code>i</code> est passé au <code>console.log()</code>, c'est par référence... Pour corriger, voyons d'abord deux astuces !</p>
+            </section>
+            <section>
+                <h2>Astuce : renvoi de fonction</h2>
+
+                <p>Test réalisé à chaque fois</p>
+                <pre><code data-trim contenteditable>
+function TestURL(){
+    if (window.location == "http://google.fr"){
+        alert("Google !");
+    } else {
+        alert("Pas Google");
+    }
+}
+                </code></pre>
+                <p>Test réalisé une fois</p>
+                <pre><code data-trim contenteditable>
+function TestURL(){
+    if (window.location == "http://google.fr"){
+        return function() {
+            alert("Google !");
+        }
+    } else {
+        return function() {
+            alert("Pas Google");
+        }
+    }
+}
+                </code></pre>
+            </section>
+            <section>
+                <h2>Astuce : IIFE ("iffy")</h2>
+
+                <p>Fonctions anonymes immédiatement appelées, un pattern de développement courant en JS. Permet d'éviter le Hoisting et de créer des portées lexicales (namespaces).</p>
+                <pre><code data-trim contenteditable>
+(function(){
+    // du code
+})();
+                </code></pre>
+                <p>Autre intérêt des IIFE, s'assurer que certain opérateurs sont surchargés comme vous le souhaitez. Exemple, si vous n'êtes pas sûr que <code>$</code> correspond à jQuery, encadrez votre code de :</p>
+                <pre><code data-trim contenteditable>
+(function($){
+    // votre code
+})(jQuery);
+                </code></pre>
+            </section>
+            <section>
+                <h2>Piège : Référence Vs. Type</h2>
+
+                <p>Utilisation du renvoi de fonction et d'une IIFE</p>
+                <pre><code data-trim contenteditable>
+var objects = [{}, {}, {}];
+
+for(var i = 0; i < objects.length; i++) {
+	objects[i].logIndex = (function(index){
+			return function() {
+                console.log(index);
+            }
+	})(i)
+}
+
+objects[0].logIndex(); // 0!
+objects[1].logIndex(); // 1!
+objects[2].logIndex(); // 2!
+                </code></pre>
+                <p>Quand <code>index</code> est passé au <code>console.log()</code>, c'est par valeur cette fois !</p>
             </section>
         </section>
         <section>
@@ -351,7 +511,7 @@ x | 1;      // 1 au lieu de 2^52 + 1
                 <h2><a href="http://jquery.com/">jQuery</a></h2>
                 <p>Framework rapide, compact et gérant très bien l'asynchrone de <a href="https://twitter.com/jeresig">John Resig</a>, ayant remporté un grand succès, principalement parce qu'il a été adopté par les intégrateurs HTML.</p>
                 <p>Souvent utilisé pour faire des choses simples. Au lieu de les faire simplement.</p>
-                <pre><code>
+                <pre><code data-trim contenteditable>
 // jQuery
 $(el).hide();
 $(el).show();   // Ajoute un "display:block", WTF ?!
@@ -413,6 +573,12 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
                 <ul>
                     <li><a href="http://yui.github.io/yuicompressor/">YUI Compressor</a> : compilateur/compresseur de Yahoo, bien éprouvé, hors-ligne (Java)</li>
                     <li><a href="http://closure-compiler.appspot.com/home">Closure Compiler</a> : compilateur de Google, en ligne, en API ou hors ligne (Java)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Une question de performance</h2>
+                <ul>
+                    <li><a href="http://jsperf.com">JSPerf.com</a> : plate-forme de crowdtesting de code(s) JavaScript.</li>
                 </ul>
             </section>
             <section>
