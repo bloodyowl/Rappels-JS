@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>reveal.js - The HTML Presentation Framework</title>
+    <title>JS WTF - Rappels, Bonnes pratique et conseils</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
@@ -52,18 +52,24 @@
         </section>
 
         <section>
-            <section data-markdown>
-                <script type="text/template">
-                    ## Javascript
-
-                    * Inventé par [Brendan Eich](https://twitter.com/BrendanEich)
-                    * Présenté pour la première fois en 1985 (inclus dans Netscape 2 en 1995)
-                    * Dernière version : [1.8.5](https://developer.mozilla.org/fr/docs/Web/JavaScript/New_in_JavaScript/1.8.5)
-                    * Supporté par tous les navigateurs principaux
-                    <img alt="Navigateurs principaux : Chrome, Firefox, IE, Opera et Safari"
-                         src="img/main-browsers.png">
-                    * Supporté par de nombreux périphériques "exotiques"
-                </script>
+            <section>
+                <h2>Javascript</h2>
+                <h3>Hier et aujourd'hui</h3>
+            </section>
+            <section>
+                <h2>Histoire</h2>
+                <ul>
+                    <li>Inventé par <a href="https://twitter.com/BrendanEich">Brendan Eich</a></li>
+                    <li>Présenté pour la première fois en 1985 (inclus dans Netscape 2 en 1995)</li>
+                    <li>Dernière version : <a
+                            href="https://developer.mozilla.org/fr/docs/Web/JavaScript/New_in_JavaScript/1.8.5">1.8.5</a>
+                    </li>
+                    <li>Supporté par tous les navigateurs principaux :
+                        <img alt="Navigateurs principaux : Chrome, Firefox, IE, Opera et Safari"
+                             src="img/main-browsers.png">
+                    </li>
+                    <li>Supporté par de nombreux périphériques "exotiques"</li>
+                </ul>
                 <aside class="notes">
                     D'abord appelé Mocha puis LiveScript, c’est suite à un accord entre Sun et Netscape qu’il prendra le
                     nom
@@ -73,14 +79,20 @@
                     qui pousse Netscape à faire normaliser JS par l'ECMA en juin 1997.
                 </aside>
             </section>
-            <section data-markdown>
-                <script type="text/template">
-                    ## Aujourd'hui
+            <section>
+                <h2>Aujourd'hui</h2>
 
-                    * Un des langages les plus populaires au monde
-                    * Les moteurs d’exécution Javascript se séparent de plus en plus des navigateurs et deviennent des
-                    technologies stand-alone : V8, SpiderMonkey, SquirrelFish/Nitro, Tamarin, Chakra...
-                    * On trouve un interpréteur Javascript sur à peu près tous les matériels informatiques existants.</script>
+                <p>Un des langages les plus populaires au monde</p>
+
+                <p>Les moteurs d’exécution Javascript se séparent de plus en plus des navigateurs et deviennent des
+                    technologies stand-alone :
+                <ul>
+                    <li>V8 : Chrome, Node.js</li>
+                    <li>JägerMonkey : Firefox</li>
+                    <li>SquirrelFish/Nitro : Safari</li>
+                    <li>Chakra : IE9+, Windows 8.*</li>
+                </ul>
+                </p>
                 <aside class="notes">
                     <ul>
                         <li>Populaire au sens : très utilisé et très discuté, comme C#, Java, PHP, C++, Objective C,
@@ -91,24 +103,8 @@
                                 Dataists</a>.
                         </li>
                         <li>ECMAScript en est à sa 5ème édition (6ème avec Harmony).</li>
-                        <li>
-                            <dl>
-                                <dt>V8</dt>
-                                <dd>Moteur JS développé par Google, utilisé sur Chrome et Node.js</dd>
-                                <dt>JägerMonkey</dt>
-                                <dd>sucesseur de SpiderMonkey (de Brendan Eich) puis TraceMonkey, utilisé sur Firefox
-                                    4.*
-                                </dd>
-                                <dt>SquirrelFish/Nitro</dt>
-                                <dd>aussi connu sous le nom "JavaScriptCore. Moteur JS de Safari</dd>
-                                <dt>Tamarin</dt>
-                                <dd>développé par Adobe Labs pour Flash</dd>
-                                <dt>Chakra</dt>
-                                <dd>développé par Microsoft, utilisé par IE9+ et Windows 8+ pour l'exécution
-                                    d'applications
-                                    Javascript
-                                </dd>
-                            </dl>
+                        <li>JägerMonkey : sucesseur de SpiderMonkey (de Brendan Eich) puis TraceMonkey, utilisé sur
+                            Firefox 4.*
                         </li>
                     </ul>
                 </aside>
@@ -123,46 +119,191 @@
         </section>
 
         <section>
-            <section data-markdown>
-                <script type="text/template">
-                    ## Langage
-
-                    * Du classique : variables, foncitons, objets, instructions, opérateurs...
-                    * Du spécifique : casse, délimiteurs<code>;</code>
-                    * Nommage des variables : des symbôles spécifiques sont tolérés, comme <code>$</code> ou <code>_</code>. Utilisez-les à bon escient, par exemple pour distinguer vos variables jQuery (<code>$variable</code>) ou avoir une information de portée (<code>_internalVar</code>).
-                </script>
+            <section>
+                <h2>Le langage</h2>
+                <h3>Rappels de fonctionnement</h3>
             </section>
-            <section data-markdown>
-                <script type="text/template">
-                    ## Variables
+            <section>
+                <h2>Javascript</h2>
 
-                    Typage faible
-                    <pre><code data-trim contenteditable>function(){
-                        var _i = 10;
-                        typeof _i; // "number"
+                <ul>
+                    <li>Variables, fonctions, objets, instructions, opérateurs...</li>
+                    <li>Sensible à la casse, délimiteurs<code>;</code></li>
+                    <li>Nommage des variables : des symbôles spécifiques sont tolérés, comme <code>$</code> ou
+                        <code>_</code>. Utilisez-les à bon escient, par exemple pour distinguer vos variables jQuery
+                        (<code>$variable</code>) ou avoir une information de portée (
+                        <code>_internalVar</code>).
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h2>Variables</h2>
 
-                        _i = "dix";
-                        typeof _i; // "string"
-                    }</pre></code>
+                <p>Typage faible</p>
+                    <pre><code data-trim contenteditable>
+function(){
+    var _i = 10;
+    typeof _i; // "number"
 
-                    Portée et Hoisting
-                    <pre><code data-trim contenteditable>var testVar = "Variable globale";
-                    function example() {
-                        alert(testVar); // undefined
+    _i = "dix";
+    typeof _i; // "string"
+}
+                    </code></pre>
 
-                        var testVar = "Variable locale";
-                        alert(testVar); // "Variable locale"
-                    }
+                <p>Portée et Hoisting</p>
+                    <pre><code data-trim contenteditable>
+var testVar = "Variable globale";
 
-                    example();</code></pre>
-                </script>
+function example() {
+    alert(testVar); // undefined
+
+    var testVar = "Variable locale";
+    alert(testVar); // "Variable locale"
+}
+
+example();
+                    </code></pre>
                 <aside class="notes">
                     <ul>
                         <li>Javascript est typé. Il bascule juste d'un type à l'autre sans problème</li>
-                        <li>La portée des variables se rapporte aux fonctions. Les délimiteurs de boucles et de tests conditionnels NE DELIMITE PAS la portée des variables</li>
-                        <li>A l'exécution, toutes les déclarations de variables sont déplacées au début de la fonction. De facto, il est souvent conseillé de placer toutes les déclarations de variables en début de fonction, de manière à éviter les confusions</li>
+                        <li>La portée des variables se rapporte aux fonctions. Les délimiteurs de boucles et de tests
+                            conditionnels NE DELIMITE PAS la portée des variables
+                        </li>
+                        <li>A l'exécution, toutes les déclarations de variables sont déplacées au début de la fonction.
+                            De facto, il est souvent conseillé de placer toutes les déclarations de variables en début
+                            de fonction, de manière à éviter les confusions
+                        </li>
                     </ul>
                 </aside>
+            </section>
+            <section>
+                <h2>Variables</h2>
+
+                <p>Déclarations</p>
+                    <pre><code data-trim contenteditable>
+// Déclarations multiples
+var maVariable1,
+    maVariable2 = 15,
+    maVariable3;
+
+// Déclarations de variables égales
+var maVariable1 = maVariable2 = 15;
+                    </code></pre>
+
+                <p>Référence vs. copie</p>
+                    <pre><code data-trim contenteditable>
+var a = 3.14;   // Déclare et initialise une variable
+var b = a;      // copie le contenu de a dans b
+a = 4;          // modifie la valeur de a
+alert(b);       // la copie n'a pas changé : 3.14
+
+var a = [1,2];  // Initialise une variable avec un tableau
+var b = a;      // copie la référence dans une nouvelle variable
+a[0] = 99;      // modifie le tableau selon la référence
+alert(b);       // affiche le tableau modifié : [99,2]
+                    </code></pre>
+                <aside class="notes">
+                    <ul>
+                        <li>Javascript est typé. Il bascule juste d'un type à l'autre sans problème</li>
+                        <li>La portée des variables se rapporte aux fonctions. Les délimiteurs de boucles et de tests
+                            conditionnels NE DELIMITE PAS la portée des variables
+                        </li>
+                        <li>A l'exécution, toutes les déclarations de variables sont déplacées au début de la fonction.
+                            De facto, il est souvent conseillé de placer toutes les déclarations de variables en début
+                            de fonction, de manière à éviter les confusions
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h2>Correspondances booléennes</h2>
+
+                <p>Tests d'existence</p>
+                    <pre><code data-trim contenteditable>
+true  == 1 == "chaine" == objet
+false == 0 == "" == null == undefined
+                    </code></pre>
+
+                <p>... ce qui permet de tester avant d'utiliser un objet</p>
+                    <pre><code data-trim contenteditable>
+if (undefined != monObjet) {
+   // utilisation de mon objet
+}
+
+// équivaut à
+if (monObjet) {
+    // utilisation de mon objet
+}
+
+// équivaut à
+monObjet && // utilisation de mon objet
+                    </code></pre>
+                <aside class="notes">
+                    <ul>
+                        <li>Javascript est typé. Il bascule juste d'un type à l'autre sans problème</li>
+                        <li>La portée des variables se rapporte aux fonctions. Les délimiteurs de boucles et de tests
+                            conditionnels NE DELIMITE PAS la portée des variables
+                        </li>
+                        <li>A l'exécution, toutes les déclarations de variables sont déplacées au début de la fonction.
+                            De facto, il est souvent conseillé de placer toutes les déclarations de variables en début
+                            de fonction, de manière à éviter les confusions
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h2>Fonctions</h2>
+
+                <p>Nommées</p>
+                    <pre><code data-trim contenteditable>
+function sheldon() {
+    alert("Bazinga!");
+}
+sheldon();
+                    </code></pre>
+                <p>Anonymes</p>
+                    <pre><code data-trim contenteditable>
+var sheldon = function() {
+    alert("Bazinga!");
+}
+sheldon();
+                    </code></pre>
+                <aside class="notes">
+                    Attention, les syntaxes nommées et anonymes s'utilisent de la même manière, mais ne sont pas équivalentes. Une fonction anonyme n'a pas de nom (logique), ce qui peut entrainer des problèmes d'identification lorsque vous débogguez ou que vous essayez de développer du code récursif.
+                    Si vous avez le choix, préférez les fonctions nommées. Quand utiliser des fonctions anonymes ? Quand vous créez un objet, un tableau, quand vous passez pas un callback...
+                </aside>
+            </section>
+            <section>
+                <h2>Programmation Orientée Objet</h2>
+
+                <p>Savoir si Javascript est orienté Objet a autant de sens que de savoir si Nantes est en Bretagne.</p>
+                <p></p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Pièges courants</h2>
+                <h3>Autant les éviter</h3>
+            </section>
+            <section>
+                <h2>Nombres</h2>
+                <p>Maximum, minimum</p>
+                <pre><code>
+var x = 9007199254740992; // Max
+var y = -x;
+x == x + 1; // true
+y == y - 1; // true
+
+z = x + 2; // 9007199254740994, ok
+z - 1; // 9007199254740992, WTF ?
+                </code></pre>
+                <p>Opérateurs arithmétiques en 64bits, décalages et opérations bit à bit en 32 bits seulement</p>
+                <pre><code>
+var x = 9007199254740992; // 2^53, [10000000....00]
+x / 2;      // 4503599627370496, ok
+x >> 1;     // 0 au lieu de 2^52
+x | 1;      // 1 au lieu de 2^52 + 1
+                </code></pre>
             </section>
         </section>
 
