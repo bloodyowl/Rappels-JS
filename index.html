@@ -44,8 +44,8 @@
 
             <p>
                 <small>par <a href="http://borisschapira.com" title="BorisSchapira.com, site web de Boris Schapira">Boris
-                    Schapira</a> / <a href="http://twitter.com/bschapira"
-                                      title="Twitter de Boris Schapira">@bschapira</a>
+                    Schapira</a> / <a href="http://twitter.com/borisschapira"
+                                      title="Twitter de Boris Schapira">@borisschapira</a>
                 </small>
             </p>
 
@@ -306,13 +306,62 @@ x | 1;      // 1 au lieu de 2^52 + 1
                 </code></pre>
             </section>
         </section>
+        <section>
+            <section>
+                <h2>Frameworks</h2>
+                <h3>et librairies</h3>
+            </section>
+            <section>
+                <h2><a href="http://jquery.com/">jQuery</a></h2>
+                <p>Framework rapide, compact et gérant très bien l'asynchrone de <a href="https://twitter.com/jeresig">John Resig</a>, ayant remporté un grand succès, principalement parce qu'il a été adopté par les intégrateurs HTML.</p>
+                <p>Souvent utilisé pour faire des choses simples. Au lieu de les faire simplement.</p>
+                <pre><code>
+// jQuery
+$(el).hide();
+$(el).show();   // Ajoute un "display:block", WTF ?!
 
+// IE8+
+el.style.display = 'none';
+el.style.display = '';      // Ne fait que ce que vous lui demandez
+                </code></pre>
+            </section>
+            <section>
+                <h2>Autres Frameworks généraux</h2>
+                <ul>
+                    <li><a href="http://yuilibrary.com/">YUI</a> : librairie de composants de Yahoo!</li>
+                    <li><a href="http://zeptojs.com/">ZeptoJS</a> : framework très minimaliste ayant la particularité de proposer un sous ensemble de l'API jQuery. Peut habilement remplacer ce dernier, mais attention à la compatibilité navigateur.</li>
+                    <li><a href="http://zeptojs.com/">Dojo Toolkit</a> : librairie de composants dont le développement est sponsorisé par IBM et SitePen</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Frameworks pour applications riches</h2>
+                <ul>
+                    <li><a href="http://backbonejs.org/">Backbone.js</a> : Framework MV* très populaire de <a href="https://twitter.com/jashkenas">Jeremy Ashkenas</a>.</li>
+                    <li><a href="http://emberjs.com/">Ember.js</a> : Framework MV* de <a href="https://twitter.com/wycats">Yehuda Katz</a>, par ailleurs contributeur jQuery et Ruby On Rails.</li>
+                    <li><a href="http://knockoutjs.com/">Knockout.js</a> : un des seuls Frameworks applicatifs MVVM</li>
+                    <li><a href="http://angularjs.org/">Ext JS</a> : librairie de componsants de Sencha.</li>
+                    <li><a href="http://angularjs.org/">Angular.js</a> : polyfill HTML5+, par Google.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Autres librairies à connaitre</h2>
+                <ul>
+                    <li><a href="https://code.google.com/p/html5shiv/">HTML5shiv.js</a> : polyfill HTML5 créé par <a href="https://twitter.com/sjoerd_visscher">Sjoerd Visscher</a>, maintenu par <a href="https://github.com/aFarkas">Alexander Farkas</a>.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Ces librairies sont trop génériques ?</h2>
+                <p>Jetez un oeil à <a href="http://microjs.com">MicroJS</a> et ses micro-librairies (inférieures à 5Ko) rendant chacune un service très précis.</p>
+                <p><a href="http://microjs.com">MicroJS</a> est <a href="https://github.com/madrobby/microjs.com">sur GitHub</a> et n'importe qui peut y ajouter son script licencié MIT ou équivalent.</p>
+                <p>Exemple : <a href="https://github.com/borisschapira/preloadr">preloadr.js</a></p>
+            </section>
+        </section>
         <section>
             <h1>FIN</h1>
 
             <h3>ça vous a plu ?</h3>
             <small>par <a href="http://borisschapira.com" title="BorisSchapira.com, site web de Boris Schapira">Boris
-                Schapira</a> / <a href="http://twitter.com/bschapira" title="Twitter de Boris Schapira">@bschapira</a>
+                Schapira</a> / <a href="http://twitter.com/borisschapira" title="Twitter de Boris Schapira">@borisschapira</a>
             </small>
         </section>
 
