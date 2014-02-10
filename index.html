@@ -136,79 +136,32 @@
                 <script type="text/template">
                     ## Variables
 
-                    * Typage faible
-                    <pre><code data-trim contenteditable class="js">
-var _i = 10;
-typeof _i; // "number"
+                    Typage faible
+                    <pre><code data-trim contenteditable>function(){
+                        var _i = 10;
+                        typeof _i; // "number"
 
-_i = "dix";
-typeof _i; // "string"
-                    </pre></code>
+                        _i = "dix";
+                        typeof _i; // "string"
+                    }</pre></code>
 
-                    * Portée
-                    <pre><code data-trim contenteditable class="js">
-function linkify( selector ) {
-  if( supports3DTransforms ) {
+                    Portée et Hoisting
+                    <pre><code data-trim contenteditable>var testVar = "Variable globale";
+                    function example() {
+                        alert(testVar); // undefined
 
-    var nodes = document.querySelectorAll( selector );
+                        var testVar = "Variable locale";
+                        alert(testVar); // "Variable locale"
+                    }
 
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-function () {
-    if (ifVar === undefined) {
-        alert("ifVar n'est pas défini");
-    }
-
-    if (false) {
-        var ifVar = "Test dans une condition";
-    }
-}
-                    </pre></code>
+                    example();</code></pre>
                 </script>
                 <aside class="notes">
                     <ul>
-                        <li>Populaire au sens : très utilisé et très discuté, comme C#, Java, PHP, C++, Objective C,
-                            Python, C,
-                            Ruby, Perl et le Shell <a
-                                    href="http://www.dataists.com/2010/12/ranking-the-popularity-of-programming-langauges/"
-                                    title="Ranking the popularity of programming languages | Dataists.com">d'après
-                                Dataists</a>.
-                        </li>
-                        <li>ECMAScript en est à sa 5ème édition (6ème avec Harmony).</li>
-                        <li>
-                            <dl>
-                                <dt>V8</dt>
-                                <dd>Moteur JS développé par Google, utilisé sur Chrome et Node.js</dd>
-                                <dt>JägerMonkey</dt>
-                                <dd>sucesseur de SpiderMonkey (de Brendan Eich) puis TraceMonkey, utilisé sur Firefox
-                                    4.*
-                                </dd>
-                                <dt>SquirrelFish/Nitro</dt>
-                                <dd>aussi connu sous le nom "JavaScriptCore. Moteur JS de Safari</dd>
-                                <dt>Tamarin</dt>
-                                <dd>développé par Adobe Labs pour Flash</dd>
-                                <dt>Chakra</dt>
-                                <dd>développé par Microsoft, utilisé par IE9+ et Windows 8+ pour l'exécution
-                                    d'applications
-                                    Javascript
-                                </dd>
-                            </dl>
-                        </li>
+                        <li>Javascript est typé. Il bascule juste d'un type à l'autre sans problème</li>
+                        <li>La portée des variables se rapporte aux fonctions. Les délimiteurs de boucles et de tests conditionnels NE DELIMITE PAS la portée des variables</li>
+                        <li>A l'exécution, toutes les déclarations de variables sont déplacées au début de la fonction. De facto, il est souvent conseillé de placer toutes les déclarations de variables en début de fonction, de manière à éviter les confusions</li>
                     </ul>
-                </aside>
-            </section>
-            <section data-background="img/tessel_so_small_620.png">
-                <aside class="notes">
-                    Tessel est un microcontrôleur tournant sous Javascript. Une multitude de modules (thermomètre,
-                    caméra,
-                    accéléromètre, servomoteur...) sont en développement. Compatible avec node et npm.
                 </aside>
             </section>
         </section>
