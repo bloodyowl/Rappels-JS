@@ -630,10 +630,10 @@ function TestURL(){
 var objects = [{}, {}, {}];
 
 for(var i = 0; i < objects.length; i++) {
-	objects[i].logIndex = (function(index){
-			return function() {
-                console.log(index);
-            }
+    objects[i].logIndex = (function(index){
+        return function() {
+            console.log(index);
+        }
 	})(i)
 }
 
