@@ -53,7 +53,7 @@
 
         <section>
             <section>
-                <h2>Javascript</h2>
+                <h2>JavaScript</h2>
                 <h3>Hier et aujourd'hui</h3>
             </section>
             <section>
@@ -73,7 +73,7 @@
                 <aside class="notes">
                     D'abord appelé Mocha puis LiveScript, c’est suite à un accord entre Sun et Netscape qu’il prendra le
                     nom
-                    définitif de Javascript.
+                    définitif de JavaScript.
                     Microsoft s'engouffre rapidement dans la brèche du langage dédié aux interactions avec JScript en
                     1996, ce
                     qui pousse Netscape à faire normaliser JS par l'ECMA en juin 1997.
@@ -84,7 +84,7 @@
 
                 <p>Un des langages les plus populaires au monde</p>
 
-                <p>Les moteurs d’exécution Javascript se séparent de plus en plus des navigateurs et deviennent des
+                <p>Les moteurs d’exécution JavaScript se séparent de plus en plus des navigateurs et deviennent des
                     technologies stand-alone :
                 <ul>
                     <li>V8 : Chrome, Node.js</li>
@@ -109,9 +109,12 @@
                     </ul>
                 </aside>
             </section>
-            <section data-background="img/tessel_so_small_620.png">
+            <section>
+                <h2>Demain</h2>
+                <p>Du JavaScript embarqué dans de nombreux périphériques.</p><p>Exemple avec le microcontrôleur JavaScript de <a href="http://tessel.io">Tessel</a>...<br />
+                <img title="Tessel Microchip" src="img/tessel_so_small_620.png"></img></p>
                 <aside class="notes">
-                    Tessel est un microcontrôleur tournant sous Javascript. Une multitude de modules (thermomètre,
+                    Tessel est un microcontrôleur tournant sous JavaScript. Une multitude de modules (thermomètre,
                     caméra,
                     accéléromètre, servomoteur...) sont en développement. Compatible avec node et npm.
                 </aside>
@@ -124,7 +127,7 @@
                 <h3>Rappels de fonctionnement</h3>
             </section>
             <section>
-                <h2>Javascript</h2>
+                <h2>JavaScript</h2>
 
                 <ul>
                     <li>Variables, fonctions, objets, instructions, opérateurs...</li>
@@ -165,7 +168,7 @@ example();
                     </code></pre>
                 <aside class="notes">
                     <ul>
-                        <li>Javascript est typé. Il bascule juste d'un type à l'autre sans problème</li>
+                        <li>JavaScript est typé. Il bascule juste d'un type à l'autre sans problème</li>
                         <li>La portée des variables se rapporte aux fonctions. Les délimiteurs de boucles et de tests
                             conditionnels NE DELIMITE PAS la portée des variables
                         </li>
@@ -204,7 +207,7 @@ alert(b);       // affiche le tableau modifié : [99,2]
                     </code></pre>
                 <aside class="notes">
                     <ul>
-                        <li>Javascript est typé. Il bascule juste d'un type à l'autre sans problème</li>
+                        <li>JavaScript est typé. Il bascule juste d'un type à l'autre sans problème</li>
                         <li>La portée des variables se rapporte aux fonctions. Les délimiteurs de boucles et de tests
                             conditionnels NE DELIMITE PAS la portée des variables
                         </li>
@@ -240,7 +243,7 @@ monObjet && // utilisation de mon objet
                     </code></pre>
                 <aside class="notes">
                     <ul>
-                        <li>Javascript est typé. Il bascule juste d'un type à l'autre sans problème</li>
+                        <li>JavaScript est typé. Il bascule juste d'un type à l'autre sans problème</li>
                         <li>La portée des variables se rapporte aux fonctions. Les délimiteurs de boucles et de tests
                             conditionnels NE DELIMITE PAS la portée des variables
                         </li>
@@ -343,6 +346,70 @@ consoleContenu(arr);    // 0:1.2, 1:true, 2:[object Object]
 consoleContenu(obj);    // x:1, y:3
                 </code></pre>
             </section>
+            <section>
+                <h2>Au futur... les Promises</h2>
+
+                <p>Problème : parfois on arrive après la bataille</p>
+                <pre><code data-trim contenteditable class="js">
+var img = document.querySelector('.img-1');
+img.addEventListener('load', function() {
+    // l'image est chargée !
+});
+                </code></pre>
+                <p>On n'obtiendra pas le résultat escompté si on arrive après le chargement de l'image...</p>
+            </section>
+            <section>
+                <h2>Au futur... les Promises</h2>
+
+                <p>On peut essayer de corriger ça avec <code>complete</code>...</p>
+                <pre><code data-trim contenteditable class="js">
+var img = document.querySelector('.img-1');
+
+function loaded() {
+    // l'image est chargée !
+}
+
+if (img.complete) {
+    loaded();
+}
+else {
+    img.addEventListener('load', loaded);
+}
+                </code></pre>
+                <p class="fragment">... mais on n'a aucun équivalent pour l'erreur, par exemple <br/>
+                <img src="img/shm.gif" alt="Zoidberg is ashamed and trash himself" /></p>
+            </section>
+            <section>
+                <h2>Au futur... les Promises</h2>
+
+                <p>Les promesses arrivent via des librairies, en attendant leur plein support. Dans l'idée, ça donne ça :</p>
+                <pre><code data-trim contenteditable class="js">
+var promise = new Promise(function(resolve, reject) {
+
+    // faire un truc, peut-être asynchrone, puis...
+
+    if (/* tout a bien marché */) {
+        resolve("Ces trucs ont marché !");
+    } else {
+        reject(Error("Ça a foiré"));
+    }
+});
+
+promise.then(function(result) {
+    console.log(result); // "Ces trucs ont marché !"
+}, function(err) {
+    console.log(err); // Error: "Ça a foiré"
+});
+                </code></pre>
+                <p>Cool, non ?</p>
+            </section>
+            <section>
+                <h2>Au futur... les Promises</h2>
+                <p>Envie d'en savoir plus ?</p>
+                <p class="fragment roll-in"><img src="img/clarity.gif" alt="Brad Pitt has an instant of clarity : Shit Yeah !" /></p>
+                <p class="fragment">Allez lire <a href="http://www.html5rocks.com/fr/tutorials/es6/promises/">cet excellent article</a> traduit par <a href="https://twitter.com/porteneuve">Christophe Porteneuve</a></p>
+
+            </section>
         </section>
         <section>
             <section>
@@ -415,7 +482,7 @@ alert(myHero.realName); // undefined
             <section>
                 <h2>Prérequis #4 : le typage</h2>
 
-                <p>A chaud, pas trop possible, car Javascript n’a pas de types évolués : à part les types primitifs, tout est <code>Object</code></p>
+                <p>A chaud, pas trop possible, car JavaScript n’a pas de types évolués : à part les types primitifs, tout est <code>Object</code></p>
                 <pre><code data-trim contenteditable class="js">
 alert(typeof(myHero)); // object
                 </code></pre>
@@ -427,7 +494,7 @@ alert(myHero instanceof Hero); // « true »
             <section>
                 <h2>Prérequis #5 : le polymorphisme</h2>
 
-                <p>Javascript n’enregistre, pour un objet, qu’une seule référence vers une « source » structurelle : son prototype.</p>
+                <p>JavaScript n’enregistre, pour un objet, qu’une seule référence vers une « source » structurelle : son prototype.</p>
                 <p>Pas de polymorphisme donc, mais on peut pratiquer l'héritage (ce qui, pour certaines personnes, est la règle #5 de la POO). Donc finalement, c'est cool :)</p>
             </section>
             <section>
@@ -563,14 +630,14 @@ coucou.quiSuisJe(); // [object Object]
                 <p>Les gestion des erreurs est possible en JavaScript</p>
                 <pre><code data-trim contenteditable class="js">
 try {
-    // code Javascript à surveiller
+    // code JavaScript à surveiller
 }
 catch (erreur) {
     alert(erreur.name);
     alert(erreur.message);
 }
 finally {
-    // code Javascript à exécuter dans
+    // code JavaScript à exécuter dans
     // tous les cas (facultatif)
 }
                 </code></pre>
@@ -820,7 +887,7 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
         <section>
             <section>
                 <h2>Quelques outils bien pratiques</h2>
-                <h3>pour mieux faire du Javascript</h3>
+                <h3>pour mieux faire du JavaScript</h3>
             </section>
             <section>
                 <h2>Partager un snippet</h2>
@@ -861,9 +928,9 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
                 </ul>
             </section>
             <section>
-                <h2>Les portes ouvertes par Javascript</h2>
+                <h2>Les portes ouvertes par JavaScript</h2>
                 <ul>
-                    <li><a href="http://nodejs.org/">Node</a> : le retour de Javascript côté serveur, pour des applications vraiment scalables.</li>
+                    <li><a href="http://nodejs.org/">Node</a> : le retour de JavaScript côté serveur, pour des applications vraiment scalables.</li>
                     <li><a href="http://casperjs.org/">Casper</a> : tests fonctionnels sur Gecko (via <a href="http://slimerjs.org/">Slimmer</a>) et Webkit(via <a href="http://phantomjs.org/">Phantom</a>).</li>
                 </ul>
             </section>
