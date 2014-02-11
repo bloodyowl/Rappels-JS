@@ -566,7 +566,7 @@ x | 1;      // 1 au lieu de 2^52 + 1
                 <pre><code data-trim contenteditable class="js">
 var objects = [{}, {}, {}];
 
-for(var i = 0; i < queries.length; i++) {
+for(var i = 0; i < objects.length; i++) {
     objects[i].logIndex = function() {
         console.log(i);
     }
@@ -630,8 +630,8 @@ function TestURL(){
 var objects = [{}, {}, {}];
 
 for(var i = 0; i < objects.length; i++) {
-    objects[i].logIndex = (function(index){
-        return function() {
+    (function(index){
+        objects[i].logIndex = function() {
             console.log(index);
         }
     })(i)
@@ -728,6 +728,14 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
             </section>
             <section>
                 <h2>Autres Frameworks généraux</h2>
+                <ul>
+                    <li><a href="http://zeptojs.com/">ZeptoJS</a> : framework très minimaliste ayant la particularité de proposer un sous ensemble de l'API jQuery. Peut habilement remplacer ce dernier, mais attention à la compatibilité navigateur.</li>
+                    <li><a href="http://underscorejs.org/">Underscore.js</a> : framework utilitaire orienté manipulation de données d'inspiration Ruby</li>
+                    <li><a href="http://lodash.com/">Lo-Dash</a> : framework utilitaire orienté consistence et performance</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Frameworks de composants</h2>
                 <ul>
                     <li><a href="https://jqueryui.com/">jQuery UI</a> : librairie de composants associée à jQuery</li>
                     <li><a href="http://yuilibrary.com/">YUI</a> : librairie de composants de Yahoo!</li>
