@@ -311,17 +311,18 @@ callIt("d");    // Erreur durant l'appel de d
 
                 <p>Object : ensemble de valeurs nommées</p>
                     <pre><code data-trim contenteditable class="js">
-var point = new Object();
-point.x = 1;
-point["y"] = 2;
+var obj = new Object();
+obj.x = 1;
+obj["y"] = 2;
 
-var point = { x : 1, y : 3 };
+var obj = { x : 1, y : 3 };
 
                     </code></pre>
                 <p>Tableaux : ensemble de valeurs indexées</p>
                     <pre><code data-trim contenteditable class="js">
-var a = new Array(1.2, true, { x:1, y:3 });
-var b = [1.2, true, { x:1, y:3 }];
+var arr = new Array(1.2, true, { x:1, y:3 });
+
+var arr = [1.2, true, { x:1, y:3 }];
                     </code></pre>
 
             </section>
@@ -331,13 +332,15 @@ var b = [1.2, true, { x:1, y:3 }];
                 <p>Parcourir avec <code>for ... in</code></p>
                 <pre><code data-trim contenteditable class="js">
 function consoleContenu(element) {
+    var result = [];
     for( var identifiant in element ) {
-        console && console.log( identifiant + ":" + element[identifiant] );
+        result.push(identifiant + ":" + element[identifiant]);
     }
+    console && console.log(result.join(', '));
 }
 
-consoleContenu(new Array(1.2, true, { x:1, y:3 }));
-consoleContenu({ x : 1, y : 3 });
+consoleContenu(arr);    // 0:1.2, 1:true, 2:[object Object]
+consoleContenu(obj);    // x:1, y:3
                 </code></pre>
             </section>
         </section>
