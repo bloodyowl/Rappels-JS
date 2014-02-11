@@ -705,6 +705,20 @@ window.addEventListener("load", function(){
                 </code></pre>
                 <p>Présent dans 99% des scripts.</p>
             </section>
+            <section>
+                <h2>Piège : DOM, JS et Memory Leak</h2>
+
+                <p>Pour éviter ces problèmes, utilisez <code>removeEventListener</code> ou <code>off</code> (jQuery).</p>
+                <pre><code data-trim contenteditable class="js">
+var item = document.createElement("div");
+var listener = function(event) {
+    // du code
+    // on enlève le listener pour éviter la fuite
+    this.removeEventListener("click", listener, false);
+};
+item.addEventListener("click", listener, false);
+                </code></pre>
+            </section>
         </section>
         <section>
             <section>
