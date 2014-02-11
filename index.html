@@ -37,18 +37,33 @@
     <!-- Any section element inside of this container is displayed as a slide -->
     <div class="slides">
         <section>
+            <section>
+                <h1> Js WTF ?! </h1>
 
-            <h1> Js WTF ?! </h1>
+                <h3>rappels, bonnes pratiques, conseils</h3>
 
-            <h3>rappels, bonnes pratiques, conseils</h3>
-
-            <p>
-                <small>par <a href="http://borisschapira.com" title="BorisSchapira.com, site web de Boris Schapira">Boris
-                    Schapira</a> / <a href="http://twitter.com/borisschapira"
-                                      title="Twitter de Boris Schapira">@borisschapira</a>
-                </small>
-            </p>
-
+                <p>
+                    <small>par <a href="http://borisschapira.com" title="BorisSchapira.com, site web de Boris Schapira">Boris
+                        Schapira</a> / <a href="http://twitter.com/borisschapira"
+                                          title="Twitter de Boris Schapira">@borisschapira</a>
+                    </small>
+                </p>
+            </section>
+            <section>
+                <h2>Envie de changer de thème ?</h2>
+                <p>
+                    Reveal.js en offre plusieurs: <br>
+                    <a href="?theme=default#/0/1">Default</a> -
+                    <a href="?theme=sky#/0/1">Sky</a> -
+                    <a href="?theme=beige#/0/1">Beige</a> -
+                    <a href="?theme=simple#/0/1">Simple</a> -
+                    <a href="?theme=serif#/0/1">Serif</a> -
+                    <a href="?theme=night#/0/1">Night</a> <br>
+                    <a href="?theme=moon#/0/1">Moon</a> -
+                    <a href="?theme=solarized#/0/1">Solarized</a>
+                </p>
+                <p><small><a href="http://lab.hakim.se/reveal-js/">En savoir plus sur Reveal.js</a></small></p>
+            </section>
         </section>
 
         <section>
@@ -85,14 +100,14 @@
                 <p>Un des langages les plus populaires au monde</p>
 
                 <p>Les moteurs d’exécution JavaScript se séparent de plus en plus des navigateurs et deviennent des
-                    technologies stand-alone :
+                    technologies stand-alone :</p>
                 <ul>
                     <li>V8 : Chrome, Node.js</li>
                     <li>JägerMonkey : Firefox</li>
                     <li>SquirrelFish/Nitro : Safari</li>
                     <li>Chakra : IE9+, Windows 8.*</li>
                 </ul>
-                </p>
+
                 <aside class="notes">
                     <ul>
                         <li>Populaire au sens : très utilisé et très discuté, comme C#, Java, PHP, C++, Objective C,
@@ -112,7 +127,7 @@
             <section>
                 <h2>Demain</h2>
                 <p>Du JavaScript embarqué dans de nombreux périphériques.</p><p>Exemple avec le microcontrôleur JavaScript de <a href="http://tessel.io">Tessel</a>...<br />
-                <img title="Tessel Microchip" src="img/tessel_so_small_620.png"></img></p>
+                <img title="Tessel Microchip" src="img/tessel_so_small_620.png" /></p>
                 <aside class="notes">
                     Tessel est un microcontrôleur tournant sous JavaScript. Une multitude de modules (thermomètre,
                     caméra,
@@ -347,7 +362,7 @@ consoleContenu(obj);    // x:1, y:3
                 </code></pre>
             </section>
             <section>
-                <h2>Au futur... les Promises</h2>
+                <h2>Au futur... les <em>Promises</em></h2>
 
                 <p>Problème : parfois on arrive après la bataille</p>
                 <pre><code data-trim contenteditable class="js">
@@ -359,7 +374,7 @@ img.addEventListener('load', function() {
                 <p>On n'obtiendra pas le résultat escompté si on arrive après le chargement de l'image...</p>
             </section>
             <section>
-                <h2>Au futur... les Promises</h2>
+                <h2>Au futur... les <em>Promises</em></h2>
 
                 <p>On peut essayer de corriger ça avec <code>complete</code>...</p>
                 <pre><code data-trim contenteditable class="js">
@@ -380,9 +395,9 @@ else {
                 <img src="img/shm.gif" alt="Zoidberg is ashamed and trash himself" /></p>
             </section>
             <section>
-                <h2>Au futur... les Promises</h2>
+                <h2>Au futur... les <em>Promises</em></h2>
 
-                <p>Les promesses arrivent via des librairies, en attendant leur plein support. Dans l'idée, ça donne ça :</p>
+                <p>Les <em>Promises</em> arrivent via des librairies, en attendant leur plein support. Dans l'idée, ça donne ça :</p>
                 <pre><code data-trim contenteditable class="js">
 var promise = new Promise(function(resolve, reject) {
 
@@ -404,7 +419,7 @@ promise.then(function(result) {
                 <p>Cool, non ?</p>
             </section>
             <section>
-                <h2>Au futur... les Promises</h2>
+                <h2>Au futur... les <em>Promises</em></h2>
                 <p>Envie d'en savoir plus ?</p>
                 <p class="fragment roll-in"><img src="img/clarity.gif" alt="Brad Pitt has an instant of clarity : Shit Yeah !" /></p>
                 <p class="fragment">Allez lire <a href="http://www.html5rocks.com/fr/tutorials/es6/promises/">cet excellent article</a> traduit par <a href="https://twitter.com/porteneuve">Christophe Porteneuve</a></p>
@@ -419,14 +434,26 @@ promise.then(function(result) {
             <section>
                 <h2>POO "Classique"</h2>
 
-                <p>La POO repose sur 5 fondamentaux</p>
-                <ul>
-                    <li>L’objet, un conteneur symbolique</li>
-                    <li>L’encapsulation, qui confère à l’objet la sécurité de ses propriétés</li>
-                    <li>Les messages (ou méthodes), qui permettent à l’extérieur de communiquer avec mon objet</li>
-                    <li>Le typage, qui donne à l’objet une appartenance à une famille conceptuelle</li>
-                    <li>Le polymorphisme, qui autorise l’objet à appartenir à plusieurs familles conceptuelles</li>
-                </ul>
+                <p>La POO repose sur 5 fondamentaux définis entre 1960 et 1970</p>
+                <ol>
+                    <li>L’objet</li>
+                    <li>L’encapsulation</li>
+                    <li>Les&nbsp;messages</li>
+                    <li>Le&nbsp;typage</li>
+                    <li>Le&nbsp;polymorphisme</li>
+                </ol>
+                <aside class="notes">
+                    <ul>
+                        <li>L’objet, un conteneur symbolique</li>
+                        <li>L’encapsulation, qui confère à l’objet la sécurité de ses propriétés</li>
+                        <li>Les messages (ou méthodes), qui permettent à l’extérieur de communiquer avec mon objet</li>
+                        <li>Le typage, qui donne à l’objet une appartenance à une famille conceptuelle</li>
+                        <li>Le polymorphisme, qui autorise l’objet à appartenir à plusieurs familles conceptuelles</li>
+                    </ul>
+                    <p>
+                        Attention : l’héritage simple (Java, C++, .NET) n’est qu’une façon de gérer le polymorphisme (Eiffel est un langage Objet qui permet par exemple l’héritage multiple).
+                    </p>
+                </aside>
             </section>
             <section>
                 <h2>Prérequis #1 : l'objet</h2>
@@ -871,10 +898,11 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
                 </ul>
             </section>
             <section>
-                <h2>Autres librairies à connaitre</h2>
+                <h2>Polyfills utiles</h2>
                 <ul>
                     <li><a href="https://code.google.com/p/html5shiv/">HTML5shiv.js</a> : polyfill HTML5 créé par <a href="https://twitter.com/sjoerd_visscher">Sjoerd Visscher</a>, maintenu par <a href="https://github.com/aFarkas">Alexander Farkas</a>.</li>
-                    <li><a href="http://modernizr.com/">Modernizr</a> : ensemble de polyfills et de détecteurs de features HTML5 et CSS3</a>.</li>
+                    <li><a href="http://modernizr.com/">Modernizr</a> : ensemble de polyfills et de détecteurs de features HTML5 et CSS3.</li>
+                    <li><a href="https://github.com/kriskowal/q">Q</a>, <a href="https://github.com/cujojs/when">when</a> et <a href="https://github.com/tildeio/rsvp.js">RSVP.js</a> : des librairies polyfills pour les <em>Promises</em></li>
                 </ul>
             </section>
             <section>
@@ -899,7 +927,7 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
                 <h2>Qualité</h2>
                 <ul>
                     <li><a href="http://www.jslint.com/">JSLint</a> : outil d'audit de code de Douglas Crockford (Yahoo, inventeur de JSON et auteur de <a href="http://shop.oreilly.com/product/9780596517748.do">JavaScript: The Good Parts</a>. JSLint est utile, bien que très tatillon, voire intransigeant.</li>
-                    <li><a href="http://www.jshint.com/">JSHint</a> : fork JSLint de <a href="Anton Kovalyov">Anton Kovalyov</a>, pour développer un outil plus proche de la communauté.</li>
+                    <li><a href="http://www.jshint.com/">JSHint</a> : fork JSLint de <a href="https://github.com/antonkovalyov">Anton Kovalyov</a>, pour développer un outil plus proche de la communauté.</li>
                     <li><a href="http://jsmanners.com/">JS Manners</a> : pour évaluer un script fourni par un tiers.</li>
                 </ul>
                 <blockquote cite="http://brendaneich.com/2010/11/paren-free/">
@@ -932,6 +960,7 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
                 <ul>
                     <li><a href="http://nodejs.org/">Node</a> : le retour de JavaScript côté serveur, pour des applications vraiment scalables.</li>
                     <li><a href="http://casperjs.org/">Casper</a> : tests fonctionnels sur Gecko (via <a href="http://slimerjs.org/">Slimmer</a>) et Webkit(via <a href="http://phantomjs.org/">Phantom</a>).</li>
+                    <li><a href="http://msdn.microsoft.com/en-us/library/windows/apps/br211867.aspx">WinJS</a> : pour développer des applications Windows 8 sous Chakra</li>
                 </ul>
             </section>
         </section>
@@ -949,9 +978,10 @@ el.style.display = '';      // Ne fait que ce que vous lui demandez
                 <pre><code data-trim contenteditable class="js">
 result = [] + [];
                 </code></pre>
-                <pre class="fragment"><code data-trim contenteditable class="js">
+                <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable class="js">
 result = [] + []; // ""
                 </code></pre>
+                <p class="fragment" data-fragment-index="1"><img title="WTF ?!" src="img/wtf1.gif" /></p>
             </section>
             <section>
                 <h2>Bonus : WTF JS ?!</h2>
@@ -959,9 +989,10 @@ result = [] + []; // ""
                 <pre><code data-trim contenteditable class="js">
 result = {} + [];
                 </code></pre>
-                <pre class="fragment"><code data-trim contenteditable class="js">
+                <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable class="js">
 result = [] + {}; // [object Object]
                 </code></pre>
+                <p class="fragment" data-fragment-index="1"><img title="WTF ?!" src="img/wtf2.gif" /></p>
             </section>
             <section>
                 <h2>Bonus : WTF JS ?!</h2>
@@ -969,9 +1000,10 @@ result = [] + {}; // [object Object]
                 <pre><code data-trim contenteditable class="js">
 "wtf" - 1
                 </code></pre>
-                <pre class="fragment"><code data-trim contenteditable class="js">
+                <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable class="js">
 "wtf" - 1 // NaN
                 </code></pre>
+                <p class="fragment" data-fragment-index="1"><img title="WTF ?!" src="img/wtf3.gif" /></p>
             </section>
             <section>
                 <h2>Bonus : WTF JS ?!</h2>
@@ -979,11 +1011,11 @@ result = [] + {}; // [object Object]
                 <pre><code data-trim contenteditable class="js">
 result = Array(16).join("wtf" - 1) + ' Batman !';
                 </code></pre>
-                <iframe width="420" height="315" src="//www.youtube.com/embed/EtoMN_xi-AM" frameborder="0" allowfullscreen></iframe>
-                <pre class="fragment"><code data-trim contenteditable class="js">
+                <pre class="fragment" data-fragment-index="1"><code data-trim contenteditable class="js">
 result = Array(16).join("wtf" - 1) + ' Batman !';
 // "NaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaNNaN Batman !"
                 </code></pre>
+                <p class="fragment" data-fragment-index="1"><img title="WTF ?!" src="img/wtf4.gif" /></p>
             </section>
         </section>
 
