@@ -274,6 +274,39 @@ sheldon();
                 </aside>
             </section>
             <section>
+                <h2>Fonctions : portée</h2>
+
+                <p>Pour le test</p>
+                    <pre><code data-trim contenteditable class="js">
+function callIt(name) {
+    try { window[name]() }
+    catch (e) { console && console.log('Erreur durant l\'appel de '+ name); }
+}
+                    </code></pre>
+                <p>Test de la portée des fonctions</p>
+                    <pre><code data-trim contenteditable class="js">
+callIt("a");    // Ok
+callIt("b");    // Erreur durant l'appel de b
+callIt("c");    // Erreur durant l'appel de c
+
+function a() {}
+
+var b = function () {};
+callIt("b");    // Ok
+
+var c = function d() {};
+
+callIt("c");    // Ok
+callIt("d");    // Erreur durant l'appel de d
+// En réalité, d n'est défini que durant la création de c
+                    </code></pre>
+                <p>Moralité : attention aux fonctions anonymes !</p>
+                <aside class="notes">
+                    Attention, les syntaxes nommées et anonymes s'utilisent de la même manière, mais ne sont pas équivalentes. Une fonction anonyme n'a pas de nom (logique), ce qui peut entrainer des problèmes d'identification lorsque vous débogguez ou que vous essayez de développer du code récursif.
+                    Si vous avez le choix, préférez les fonctions nommées. Quand utiliser des fonctions anonymes ? Quand vous créez un objet, un tableau, quand vous passez pas un callback...
+                </aside>
+            </section>
+            <section>
                 <h2>Objets et tableaux</h2>
 
                 <p>Object : ensemble de valeurs nommées</p>
