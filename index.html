@@ -351,8 +351,8 @@ myHero.realName = "Lex Luthor"; // Mouhahahahaaaa !
                 <p>Mais on sait comment rendre indisponible une variable "à l'extérieur" : il suffit de la mettre dans une fonction</p>
                 <pre><code data-trim contenteditable class="js">
 function Hero(){
-    var realName = "Clark Kent";
-    var surname = "Superman";
+    var realName = "Clark Kent",
+        surname = "Superman";
 }
 var myHero = new Hero();
                 </code></pre>
@@ -363,16 +363,16 @@ var myHero = new Hero();
 
                 <p>On peut ajouter un accesseur</p>
                 <pre><code data-trim contenteditable class="js">
-function Hero(name, superName){
-    var realName = name;
-    var surname = superName;
-    this.getName = function(){
+function Hero(name, surname){
+    var realName = name,
+        surname = surname;
+    this.getSurname = function(){
         return surname
     };
 }
 
 var myHero = new Hero("Clark Kent", "Superman");
-alert(myHero.getName()); // "Superman"
+alert(myHero.getSurname()); // "Superman"
 alert(myHero.realName); // undefined
                 </code></pre>
             </section>
@@ -392,26 +392,98 @@ alert(myHero instanceof Hero); // « true »
                 <h2>Prérequis #5 : le polymorphisme</h2>
 
                 <p>Javascript n’enregistre, pour un objet, qu’une seule référence vers une « source » structurelle : son prototype.</p>
-                <p>On parlera donc de Programmation Orientée Prototype (en attendant ECMAScript 6).</p>
+                <p>Pas de polymorphisme donc, mais on peut pratiquer l'héritage (ce qui, pour certaines personnes, est la règle #5 de la POO). Donc finalement, c'est cool :)</p>
             </section>
             <section>
                 <h2>Programmation Orientée Prototype</h2>
 
                 <p>En utilisant le prototype, on peut optimiser l'exemple précédent pour ne pas recopier l'accesseur dans toutes les instances et le définir uniquement quand <code>Hero</code> n'est pas encore initialisé :</p>
                 <pre><code data-trim contenteditable class="js">
-function Hero(name, superName){
-    var realName = name;
-    var surname = superName;
+function Hero(name, surname){
+    var realName = name,
+        surname = surname;
     if (typeof Hero.initialized == "undefined"){
-        Hero.prototype.getName = function(){
+        Hero.prototype.getSurname = function(){
             return surname
         };
     }
 }
 
 var myHero = new Hero("Clark Kent", "Superman");
-alert(myHero.getName()); // "Superman"
+alert(myHero.getSurname()); // "Superman"
 alert(myHero.realName); // undefined
+                </code></pre>
+            </section>
+            <section>
+                <h2>Programmation Orientée Prototype</h2>
+
+                <p>On peut même réorganiser le code autour des notions de privé et public :</p>
+                <pre><code data-trim contenteditable class="js">
+function Hero(name, surname){
+    var publics = this,
+        privates = {};
+    publics.name = name;
+    privates.surname = surname;
+    if (typeof Hero.initialized == "undefined"){
+        Hero.prototype.getSurname = function(){
+            return privates.surname
+        };
+    }
+}
+
+var myHero = new Hero("Clark Kent", "Superman");
+alert(myHero.getSurname()); // "Superman"
+alert(myHero.realName); // undefined
+                </code></pre>
+            </section>
+            <section>
+                <h2>Programmation Orientée Prototype</h2>
+
+                <p>Et ajouter la notion de constructeur, de méthodes statiques et de chaînage des propriétés</p>
+                <pre><code data-trim contenteditable class="js">
+/*** Déclaration du type ***/
+function Hero(name, surname) {
+    this.init(name, surname);
+    Hero.total = typeof Hero.total != 'undefined' ? Hero.total + 1 : 1
+}
+/*** Enrichissement ***/
+(function () {
+    Hero.total = 0;
+
+    /*** Constructeur ***/
+    Hero.prototype.init = function (name, surname) {
+        this.__privates = this.__privates || { surname: surname };
+        name && this.name(name)
+    };
+
+    /*** Getter/Setter ***/
+    Hero.prototype.name = function (value) {
+        var privates = this.__privates;
+        if (typeof value == 'undefined') {
+            return privates.name
+        } else {
+            privates.name = new String(value).toString();
+            return this
+        }
+    };
+
+    /*** Getter ***/
+    Hero.prototype.surname = function () {
+        var privates = this.__privates;
+        return privates.surname
+    }
+}());
+
+// Utilisation
+var Super = new Hero('Clark Kent', 'Superman'),
+    Spidey = new Hero('Peter Parker', 'Spiderman');
+
+// Variable statique
+alert(Hero.total);
+
+// Chaînage
+alert(Spidey.name('Otto Octavius').surname());
+alert(Spidey.name())
                 </code></pre>
             </section>
             <section>
@@ -420,12 +492,12 @@ alert(myHero.realName); // undefined
                 <p>Mais attention alors à la dépendance au prototype</p>
                 <pre><code data-trim contenteditable class="js">
 var myHero = new Hero("Clark Kent", "Superman");
-alert(myHero.getName()); // "Superman"
+alert(myHero.surname()); // "Superman"
 
-Hero.prototype.getName = function(){ return "Superslip" };
-alert(myHero.getName()); // "Superslip"
+Hero.prototype.surname = function(){ return "Superslip" };
+alert(myHero.surname()); // "Superslip"
                 </code></pre>
-                <p>Encore un coup de Lex Luthor...</p>
+                <p><img alt="Encore un coup de Lex Luthor" src="img/luthor.jpg"/></p>
             </section>
         </section>
         <section>
