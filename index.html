@@ -272,12 +272,13 @@ false == 0 == "" == null == undefined
                 <p>... ce qui permet de tester avant d'utiliser un objet</p>
                     <pre><code data-trim contenteditable class="js">
 if (undefined != monObjet) {
-   // utilisation de mon objet
+   // compare l'égalité de mon objet face à `null` ou `undefined`
 }
 
-// équivaut à
 if (monObjet) {
-    // utilisation de mon objet
+    // quant à lui, compare la "truthyness" the `monObject`
+    // "" == undefined retourne true, alors que !!"" retourne false
+    // `if(expression) block` équivaut à `!!(expression) && block` 
 }
 
 // équivaut à
