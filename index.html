@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>JS WTF - Rappels, Bonnes pratique et conseils</title>
+    <title>JS FTW - Rappels, Bonnes pratique et conseils</title>
 
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
@@ -53,7 +53,7 @@
                 <h2>Envie de changer de thème ?</h2>
                 <p>
                     Reveal.js en offre plusieurs: <br>
-                    <a href="#/0/1">Default</a> -
+                    <a href="?#/0/1">Default</a> -
                     <a href="?theme=sky#/0/1">Sky</a> -
                     <a href="?theme=beige#/0/1">Beige</a> -
                     <a href="?theme=simple#/0/1">Simple</a> -
@@ -72,18 +72,13 @@
                 <h3>Hier et aujourd'hui</h3>
             </section>
             <section>
-                <h2>Histoire</h2>
+                <h2>Création</h2>
                 <ul>
                     <li>Inventé par <a href="https://twitter.com/BrendanEich">Brendan Eich</a></li>
-                    <li>Présenté pour la première fois en 1985 (inclus dans Netscape 2 en 1995)</li>
-                    <li>Dernière version : <a
-                            href="https://developer.mozilla.org/fr/docs/Web/JavaScript/New_in_JavaScript/1.8.5">1.8.5</a>
-                    </li>
-                    <li>Supporté par tous les navigateurs principaux :
-                        <img alt="Navigateurs principaux : Chrome, Firefox, IE, Opera et Safari"
-                             src="img/main-browsers.png">
-                    </li>
-                    <li>Supporté par de nombreux périphériques "exotiques"</li>
+                    <li>Présenté pour la première fois en 1985, MochaScript (serveur)</li>
+                    <li>Netscape récupère le projet et le renomme LiveScript</li>
+                    <li>Sun s'associe à Netscape. Navigator 2, livré en 1995, inclus JavaScript</li>
+                    <li>Microsoft met la pression avec JScript (1996), et pousse involontairement la standardisation ECMA</li>
                 </ul>
                 <aside class="notes">
                     D'abord appelé Mocha puis LiveScript, c’est suite à un accord entre Sun et Netscape qu’il prendra le
@@ -95,17 +90,32 @@
                 </aside>
             </section>
             <section>
-                <h2>Aujourd'hui</h2>
-
-                <p>Un des langages les plus populaires au monde</p>
-
-                <p>Les moteurs d’exécution JavaScript se séparent de plus en plus des navigateurs et deviennent des
-                    technologies stand-alone :</p>
+                <h2>La <em>Nouvelle Vague</em></h2>
                 <ul>
-                    <li>V8 : Chrome, Node.js</li>
-                    <li>JägerMonkey : Firefox</li>
-                    <li>SquirrelFish/Nitro : Safari</li>
-                    <li>Chakra : IE9+, Windows 8.*</li>
+                    <li>Les années 2000 voient fleurir les frameworks JS (Prototype, Mootolls, jQuery...)</li>
+                    <li>En 2009, Node.js redonne à JavaScript sa noblesse sur serveur</li>
+                    <li>Fin des années 2000 : les potentiels successeurs se compilent en JavaScript (Coffee, Dart, TypeScript)</li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>Prototype JS, jQuery, Mootools : nouveaux concepts, héritage, extensibilité et maintenance. Adoption massive par des publics parfois différents.</li>
+                        <li>Node.js : conçu pour créer côté serveur des applications Internet capables de fortement monter en charge</li>
+                        <li>JS étant un tel standard, l'adoption d'un successeur passe par sa compilation en JS... compilation qui agit également comme un frein à l'adoption !</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h2>Aujourd'hui</h2>
+                <ul>
+                    <li>Un des langages les plus populaires au monde</li>
+                    <li>Dernière version : <a
+                            href="https://developer.mozilla.org/fr/docs/Web/JavaScript/New_in_JavaScript/1.8.5">1.8.5</a>
+                    </li>
+                    <li>Supporté par tous les navigateurs principaux :
+                        <img alt="Navigateurs principaux : Chrome, Firefox, IE, Opera et Safari"
+                             src="img/main-browsers.png">
+                    </li>
+                    <li>Supporté par de nombreux périphériques "exotiques"</li>
                 </ul>
 
                 <aside class="notes">
@@ -117,6 +127,23 @@
                                     title="Ranking the popularity of programming languages | Dataists.com">d'après
                                 Dataists</a>.
                         </li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h2>Briques applicatives JS</h2>
+
+                 <p>Les moteurs d’exécution JavaScript se séparent de plus en plus des navigateurs et deviennent des
+                    technologies stand-alone :</p>
+                <ul>
+                    <li>V8 : Chrome, Node.js</li>
+                    <li>JägerMonkey : Firefox</li>
+                    <li>SquirrelFish/Nitro : Safari</li>
+                    <li>Chakra : IE9+, Windows 8.*</li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
                         <li>ECMAScript en est à sa 5ème édition (6ème avec Harmony).</li>
                         <li>JägerMonkey : sucesseur de SpiderMonkey (de Brendan Eich) puis TraceMonkey, utilisé sur
                             Firefox 4.*
